@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>hugo perrin — creative strategist</title>
+<meta name="description" content="Hugo Perrin is a creative strategist and media buyer scaling D2C brands internationally — psychology-driven creative, paid social, and conversion." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Archivo+Narrow:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --ink:#0a0a0a;
+    --paper:#fafaf8;
+    --white:#ffffff;
+    --grey:#6b6b6b;
+    --line:#e3e1da;
+    --stone:#eceae3;
+    --maxw:1280px;
+    --pad:clamp(20px,5vw,72px);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Archivo',system-ui,sans-serif;
+    font-size:17px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  ::selection{background:var(--ink);color:var(--paper)}
+
+  /* ---------- nav ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(250,250,248,.82);
+    backdrop-filter:saturate(180%) blur(12px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{
+    max-width:var(--maxw);margin:0 auto;
+    padding:18px var(--pad);
+    display:flex;align-items:baseline;justify-content:space-between;gap:24px;
+  }
+  .brand{
+    font-weight:800;font-size:18px;letter-spacing:-.02em;text-transform:lowercase;
+  }
+  .brand span{color:var(--grey);font-weight:500}
+  .navlinks{display:flex;gap:26px;font-size:15px;text-transform:lowercase;font-weight:500}
+  .navlinks a{position:relative;color:var(--grey);transition:color .2s}
+  .navlinks a:hover,.navlinks a.active{color:var(--ink)}
+  .navlinks a::after{
+    content:"";position:absolute;left:0;bottom:-4px;height:1.5px;width:0;background:var(--ink);transition:width .25s ease;
+  }
+  .navlinks a:hover::after{width:100%}
+
+  /* ---------- shell ---------- */
+  main{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad)}
+  .view{display:none;animation:fade .5s ease}
+  .view.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--grey);
+  }
+
+  /* ---------- home hero ---------- */
+  .hero{padding:clamp(56px,11vw,140px) 0 clamp(40px,7vw,90px)}
+  .hero h1{
+    font-size:clamp(38px,7.4vw,104px);
+    line-height:.98;letter-spacing:-.035em;font-weight:800;
+    text-transform:lowercase;max-width:18ch;
+  }
+  .hero h1 em{font-style:normal;color:var(--grey)}
+  .hero .sub{
+    margin-top:clamp(24px,3vw,40px);max-width:54ch;
+    font-size:clamp(17px,1.9vw,22px);color:#2c2c2c;line-height:1.5;font-weight:400;
+  }
+  .hero .meta{
+    margin-top:34px;display:flex;flex-wrap:wrap;gap:10px 26px;
+    font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:.04em;color:var(--grey);
+    text-transform:uppercase;
+  }
+  .hero .meta b{color:var(--ink);font-weight:500}
+
+  /* ---------- stat band ---------- */
+  .band{
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    display:grid;grid-template-columns:repeat(4,1fr);
+    margin:0 0 clamp(48px,8vw,96px);
+  }
+  .band div{padding:26px 8px 28px;border-right:1px solid var(--line)}
+  .band div:last-child{border-right:0}
+  .band .n{font-size:clamp(26px,3.4vw,42px);font-weight:800;letter-spacing:-.03em;line-height:1}
+  .band .l{margin-top:8px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--grey)}
+  @media(max-width:720px){.band{grid-template-columns:repeat(2,1fr)}.band div:nth-child(2){border-right:0}}
+
+  /* ---------- work grid ---------- */
+  .work-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:28px;gap:20px;flex-wrap:wrap}
+  .work-head h2{font-size:clamp(22px,3vw,30px);font-weight:700;text-transform:lowercase;letter-spacing:-.02em}
+  .grid{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(14px,1.6vw,22px);
+    padding-bottom:clamp(60px,9vw,120px);
+  }
+  .tile{
+    position:relative;border:1px solid var(--line);background:var(--white);
+    padding:0;overflow:hidden;cursor:pointer;transition:transform .35s cubic-bezier(.2,.7,.2,1),background .35s,color .35s,border-color .35s;
+    display:flex;flex-direction:column;min-height:300px;
+  }
+  .tile:hover{background:var(--ink);color:var(--paper);transform:translateY(-4px);border-color:var(--ink)}
+  .tile .thumb{
+    aspect-ratio:16/10;width:100%;background:var(--stone);
+    display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;
+    border-bottom:1px solid var(--line);transition:border-color .35s;
+  }
+  .tile:hover .thumb{border-color:#222}
+  .tile .thumb .ph{
+    font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:#9a978d;text-transform:uppercase;text-align:center;padding:14px;
+  }
+  .tile .thumb img{width:100%;height:100%;object-fit:cover}
+  .tile .body{padding:20px 22px 24px;display:flex;flex-direction:column;gap:8px;flex:1}
+  .tile .num{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:var(--grey);transition:color .35s}
+  .tile:hover .num{color:#9a9a9a}
+  .tile h3{font-size:clamp(20px,2.4vw,27px);font-weight:700;letter-spacing:-.02em;text-transform:lowercase;line-height:1.05}
+  .tile p{font-size:14.5px;color:var(--grey);transition:color .35s;line-height:1.45}
+  .tile:hover p{color:#bdbdbd}
+  .tile .tags{margin-top:auto;display:flex;flex-wrap:wrap;gap:6px;padding-top:14px}
+  .tile .tags span{
+    font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;
+    border:1px solid var(--line);padding:4px 9px;color:var(--grey);transition:border-color .35s,color .35s;
+  }
+  .tile:hover .tags span{border-color:#3a3a3a;color:#cfcfcf}
+  .tile .arrow{position:absolute;top:16px;right:18px;font-size:18px;opacity:0;transform:translate(-4px,4px);transition:.3s}
+  .tile:hover .arrow{opacity:1;transform:none}
+  @media(max-width:680px){.grid{grid-template-columns:1fr}}
+
+  /* ---------- case study ---------- */
+  .case{padding-top:clamp(28px,5vw,56px)}
+  .back{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--grey);display:inline-flex;gap:8px;align-items:center;margin-bottom:clamp(28px,4vw,48px)}
+  .back:hover{color:var(--ink)}
+  .case-tag{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--grey)}
+  .case h1{
+    font-size:clamp(32px,5.6vw,72px);line-height:1.02;letter-spacing:-.03em;font-weight:800;
+    text-transform:lowercase;margin:14px 0 0;max-width:20ch;
+  }
+  .case .lede{margin-top:24px;max-width:60ch;font-size:clamp(18px,2.1vw,23px);color:#2c2c2c;line-height:1.5}
+
+  .case-hero{
+    margin:clamp(36px,5vw,64px) 0;aspect-ratio:16/8;width:100%;
+    background:var(--stone);border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;overflow:hidden;
+  }
+  .case-hero img{width:100%;height:100%;object-fit:cover}
+
+  .facts{
+    display:grid;grid-template-columns:1fr 1fr;gap:0;
+    border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);
+    margin-bottom:clamp(40px,6vw,72px);
+  }
+  .facts .col{padding:28px 0}
+  .facts .col:first-child{border-right:1px solid var(--line);padding-right:32px}
+  .facts .col:last-child{padding-left:32px}
+  .facts h4{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--grey);margin-bottom:14px}
+  .facts ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+  .facts li{font-size:16px;font-weight:500;padding-left:18px;position:relative}
+  .facts li::before{content:"—";position:absolute;left:0;color:var(--grey)}
+  @media(max-width:640px){
+    .facts{grid-template-columns:1fr}
+    .facts .col:first-child{border-right:0;border-bottom:1px solid var(--line);padding-right:0}
+    .facts .col:last-child{padding-left:0}
+  }
+
+  .block{margin-bottom:clamp(44px,6vw,80px);max-width:74ch}
+  .block .eyebrow{display:block;margin-bottom:16px}
+  .block h2{font-size:clamp(24px,3.2vw,38px);font-weight:700;letter-spacing:-.02em;text-transform:lowercase;line-height:1.08;margin-bottom:18px;max-width:22ch}
+  .block p{font-size:17px;color:#2f2f2f;margin-bottom:15px;line-height:1.62}
+  .block p:last-child{margin-bottom:0}
+
+  .pull{
+    font-size:clamp(24px,3.6vw,44px);font-weight:800;letter-spacing:-.025em;line-height:1.08;
+    text-transform:lowercase;margin:clamp(36px,5vw,64px) 0;max-width:24ch;
+  }
+  .pull .hl{background:linear-gradient(transparent 62%, #e7e3d6 62%)}
+
+  .metrics{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:clamp(36px,5vw,64px) 0;
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  }
+  .metrics div{padding:30px 6px;border-right:1px solid var(--line)}
+  .metrics div:last-child{border-right:0}
+  .metrics .n{font-size:clamp(28px,4vw,52px);font-weight:800;letter-spacing:-.03em;line-height:1}
+  .metrics .l{margin-top:10px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--grey)}
+  @media(max-width:640px){.metrics{grid-template-columns:1fr}.metrics div{border-right:0;border-bottom:1px solid var(--line)}.metrics div:last-child{border-bottom:0}}
+
+  /* media gallery */
+  .gallery{display:grid;gap:clamp(12px,1.4vw,18px);margin:clamp(32px,4vw,56px) 0}
+  .g2{grid-template-columns:1fr 1fr}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  @media(max-width:640px){.g2,.g3{grid-template-columns:1fr}}
+  .slot{
+    background:var(--stone);border:1px solid var(--line);position:relative;overflow:hidden;
+    display:flex;align-items:center;justify-content:center;min-height:200px;
+  }
+  .slot.vid{aspect-ratio:9/16}
+  .slot.sq{aspect-ratio:1/1}
+  .slot.wide{aspect-ratio:16/9}
+  .slot img,.slot video{width:100%;height:100%;object-fit:cover}
+  .slot .ph{text-align:center;padding:18px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;color:#908d83;text-transform:uppercase;line-height:1.6}
+  .slot .ph .tag{display:inline-block;margin-top:10px;border:1px solid #cfccc2;padding:4px 10px;color:#7d7a70;border-radius:0}
+  .slot .ph .play{font-size:30px;display:block;margin-bottom:6px;color:#b7b4aa}
+
+  .quote{
+    border-left:2px solid var(--ink);padding:6px 0 6px 26px;margin:clamp(32px,4vw,56px) 0;max-width:60ch;
+    font-size:clamp(19px,2.3vw,26px);font-weight:600;letter-spacing:-.01em;line-height:1.32;font-style:italic;
+  }
+  .quote cite{display:block;margin-top:14px;font-style:normal;font-size:13px;font-weight:500;color:var(--grey);font-family:'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase}
+
+  .casenav{
+    display:flex;justify-content:space-between;gap:16px;border-top:1px solid var(--line);
+    padding:clamp(32px,4vw,52px) 0 clamp(56px,8vw,96px);margin-top:clamp(24px,4vw,48px);
+  }
+  .casenav a{font-weight:600;text-transform:lowercase;letter-spacing:-.01em;font-size:clamp(18px,2.4vw,26px);color:var(--grey);transition:color .2s}
+  .casenav a:hover{color:var(--ink)}
+  .casenav .lbl{display:block;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--grey);margin-bottom:6px}
+  .casenav a:last-child{text-align:right}
+
+  /* ---------- about ---------- */
+  .about{padding:clamp(40px,7vw,90px) 0 clamp(60px,9vw,120px);display:grid;grid-template-columns:1.4fr 1fr;gap:clamp(32px,6vw,80px)}
+  @media(max-width:820px){.about{grid-template-columns:1fr}}
+  .about h1{font-size:clamp(30px,5vw,58px);line-height:1.04;letter-spacing:-.03em;font-weight:800;text-transform:lowercase;margin-bottom:28px}
+  .about p{font-size:17.5px;color:#2c2c2c;margin-bottom:16px;line-height:1.62;max-width:60ch}
+  .about .side{font-family:'Archivo Narrow',sans-serif}
+  .about .side h4{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--grey);margin:26px 0 12px;border-top:1px solid var(--line);padding-top:18px}
+  .about .side ul{list-style:none}
+  .about .side li{font-size:15.5px;padding:5px 0;color:#2c2c2c;display:flex;justify-content:space-between;gap:12px}
+  .about .side li span{color:var(--grey);font-size:13px}
+  .portrait{aspect-ratio:4/5;background:var(--stone);border:1px solid var(--line);margin-bottom:20px;display:flex;align-items:center;justify-content:center}
+  .portrait .ph{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;color:#908d83;text-transform:uppercase;text-align:center;padding:18px}
+
+  /* ---------- footer ---------- */
+  footer{border-top:1px solid var(--line);background:var(--ink);color:var(--paper)}
+  .foot{max-width:var(--maxw);margin:0 auto;padding:clamp(48px,7vw,90px) var(--pad);display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap}
+  .foot h3{font-size:clamp(30px,5vw,64px);font-weight:800;letter-spacing:-.03em;text-transform:lowercase;line-height:1}
+  .foot a.mail{font-size:clamp(16px,2vw,22px);border-bottom:1px solid #555;padding-bottom:3px}
+  .foot a.mail:hover{border-color:var(--paper)}
+  .foot .fl{display:flex;gap:22px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#9a9a9a;margin-top:18px}
+  .foot .fl a:hover{color:var(--paper)}
+  .foot .col2{text-align:right}
+  @media(max-width:600px){.foot .col2{text-align:left}}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+  :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+</style>
+</head>
+<body>
+<header>
+  <nav>
+    <a class="brand" href="#" data-go="home">hugo perrin<span> — creative strategist</span></a>
+    <div class="navlinks">
+      <a href="#" data-go="home" class="active">work</a>
+      <a href="#" data-go="about">about</a>
+      <a href="#" data-go="resume">resume</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <!-- ============ HOME ============ -->
+  <section class="view active" id="home">
+    <div class="hero">
+      <p class="eyebrow reveal">creative strategist · media buyer · d2c</p>
+      <h1 class="reveal">i turn consumer psychology into <em>paid media that scales.</em></h1>
+      <p class="sub reveal">i build creative frameworks grounded in data — from customer pain points to iterative testing matrices — and run the acquisition behind them. the goal is always the same: push roas without flattening the brand.</p>
+      <div class="meta reveal">
+        <span>based in <b>réunion</b> · open to v.i.e worldwide</span>
+        <span>fr · en · es</span>
+        <span><b>€1m+</b> revenue generated</span>
+      </div>
+    </div>
+
+    <div class="band reveal">
+      <div><div class="n">€1M+</div><div class="l">revenue generated</div></div>
+      <div><div class="n">€500K+</div><div class="l">ad spend managed</div></div>
+      <div><div class="n">6</div><div class="l">d2c brands launched</div></div>
+      <div><div class="n">3</div><div class="l">markets · fr / dach / nordics</div></div>
+    </div>
+
+    <div class="work-head reveal">
+      <h2>selected work</h2>
+      <span class="eyebrow">2023 — 2026</span>
+    </div>
+
+    <div class="grid" id="tileGrid"><!-- tiles injected --></div>
+  </section>
+
+  <!-- ============ CASE STUDY ============ -->
+  <section class="view" id="case">
+    <div class="case" id="caseInner"><!-- injected --></div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="view" id="about">
+    <div class="about">
+      <div>
+        <p class="eyebrow reveal">about</p>
+        <h1 class="reveal">hi, i'm hugo — i make brands impossible to scroll past.</h1>
+        <p class="reveal">i'm a creative strategist and media buyer who pairs consumer psychology with performance marketing to scale d2c brands internationally. across six brands i've generated more than a million euros in revenue and managed over half a million in ad spend on meta, tiktok and snapchat.</p>
+        <p class="reveal">my method starts with the customer, not the creative. i map stages of awareness, dig into frustration points, then build iterative test matrices that tell me which angle, hook and format actually move the number. from there i handle the full chain — art direction, scriptwriting, copy adaptation to local codes, tracking setup, and the media buying itself.</p>
+        <p class="reveal">i've launched into the french, dach and nordic markets, built shopify stores from scratch, and co-founded companies from idea to product-market fit. i'm a french citizen under 29 — fully eligible for the v.i.e program — and i'm looking for a mission with real autonomy, real budgets, and real ownership, anywhere in the world.</p>
+      </div>
+      <aside class="side reveal">
+        <div class="portrait"><img src="images/portrait.jpg" alt="Hugo Perrin" onerror="this.replaceWith(window.__phEl('replace with photo','portrait.jpg',false))"></div>
+        <h4>toolkit</h4>
+        <ul>
+          <li>meta ads <span>expert</span></li>
+          <li>tiktok / snapchat <span>advanced</span></li>
+          <li>creative strategy <span>expert</span></li>
+          <li>tracking · capi <span>advanced</span></li>
+          <li>shopify · cro <span>expert</span></li>
+          <li>adobe · capcut <span>advanced</span></li>
+          <li>midjourney · ai <span>advanced</span></li>
+        </ul>
+        <h4>languages</h4>
+        <ul>
+          <li>french <span>native</span></li>
+          <li>english <span>fluent</span></li>
+          <li>spanish <span>fluent</span></li>
+        </ul>
+        <h4>looking for</h4>
+        <ul>
+          <li>creative strategist <span>senior</span></li>
+          <li>media buyer <span>paid social</span></li>
+          <li>growth / e-com <span>v.i.e</span></li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ============ RESUME ============ -->
+  <section class="view" id="resume">
+    <div class="case" style="padding-bottom:clamp(60px,9vw,120px)">
+      <p class="eyebrow reveal" style="margin-top:clamp(28px,5vw,56px)">resume</p>
+      <h1 class="reveal" style="margin-bottom:8px">experience.</h1>
+      <p class="lede reveal">the short version. full pdf available on request.</p>
+
+      <div id="resumeList" style="margin-top:clamp(36px,5vw,64px)"></div>
+
+      <h2 style="font-size:clamp(22px,3vw,30px);font-weight:700;text-transform:lowercase;letter-spacing:-.02em;border-top:1px solid var(--ink);padding-top:28px;margin-top:24px">education</h2>
+      <div class="facts" style="border-top:0;margin-top:18px">
+        <div class="col">
+          <h4>e-commerce mentoring · 2022–2023</h4>
+          <p style="font-size:15.5px;color:#2f2f2f">market research, competitive analysis and e-commerce strategy under an entrepreneur's guidance.</p>
+        </div>
+        <div class="col">
+          <h4>bsc chemistry · 2018–2021</h4>
+          <p style="font-size:15.5px;color:#2f2f2f">université de la réunion. analytical rigor that still shapes how i read data.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="foot">
+    <div>
+      <h3>let's build<br/>something that scales.</h3>
+      <div class="fl">
+        <a href="https://www.linkedin.com" target="_blank" rel="noopener">linkedin ↗</a>
+        <a href="#" data-go="resume">resume ↗</a>
+      </div>
+    </div>
+    <div class="col2">
+      <a class="mail" href="mailto:hp.hugoperrinpro@gmail.com">hp.hugoperrinpro@gmail.com</a>
+      <div class="fl" style="justify-content:flex-end">
+        <span>réunion · worldwide</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ---------------- DATA ---------------- */
+const PROJECTS = [
+  {
+    id:"bobiotics",
+    name:"bobiotics",
+    tag:"go-to-market · dach",
+    period:"mar 2026 — jun 2026",
+    card:"led the german-market launch of a dog supplement brand — positioning, angles, art direction and the first acquisition spend.",
+    tags:["creative strategy","art direction","meta ads","dach"],
+    role:["positioning & go-to-market","creative angles & scriptwriting","full art direction","copy adaptation (dach codes)","initial media buying"],
+    deliverables:["market positioning","static & video ad creative","comparison-ad framework","localized copy (de / nl)","acquisition launch"],
+    lede:"a clinically-formulated dog supplement brand had a strong product and zero foothold in germany. i built the go-to-market that turned it into a market it could actually sell into.",
+    problem:["bobiotics makes anti-itch & allergy supplements for dogs — a category dominated by prescription drugs like apoquel and cortisone. entering the dach and benelux markets, the brand had a credible, vet-developed product but no positioning, no creative system and no acquisition engine.","the challenge wasn't awareness of the problem — every owner of an itchy dog knows the pain. it was convincing them that a natural supplement could replace what their vet prescribes."],
+    insight:["dog owners weren't shopping for ingredients — they were exhausted by the cycle of expensive vet visits, side effects, and symptoms that always came back. the real lever was reframing the choice: not 'supplement vs. nothing', but 'natural root-cause fix vs. aggressive chemistry that only masks symptoms'.","that reframe became the spine of the whole creative system — most visibly in the comparison ads positioning bobiotics directly against apoquel and cortisone."],
+    pull:"i positioned a supplement as <span class='hl'>the natural alternative to aggressive chemistry</span> — not as a 'nice to have'.",
+    strategy:["i defined the positioning, then built a creative matrix across angles: the comparison play (vs. apoquel / cortisone), the mechanism story (gut health → less itching), and the emotional relief angle (an owner who finally stopped worrying).","i handled full art direction on the visuals, adapted every line of copy to dach and dutch cultural codes, and deployed the initial acquisition budget to find the angles that scaled."],
+    quote:{t:"finally no more worrying about the constant scratching. the formula is vet-developed and actually affordable.",c:"ad concept — testimonial angle, de market"},
+    media:[
+      {type:"video",file:"bobiotics-video-1.mp4",label:"Nowheretochange2-tu.mp4",note:"hook / pas video ad"},
+      {type:"video",file:"bobiotics-video-2.mp4",label:"Pawcastv1-Full.mp4",note:"podcast-style ugc ad"},
+      {type:"video",file:"bobiotics-video-3.mp4",label:"Animation Ad v2 h2.mp4",note:"motion / animation ad"},
+      {type:"img",file:"bobiotics-1.png",label:"2302Comparison3.png",note:"comparison ad — vs cortisone (de)"},
+      {type:"img",file:"bobiotics-2.png",label:"2302Comparison1-169.png",note:"comparison ad — vs apoquel (de)"},
+      {type:"img",file:"bobiotics-3.png",label:"ComparisonSquare.png",note:"fresh-dry vs standard kibble"},
+      {type:"img",file:"bobiotics-4.png",label:"Screenshot 10.00.21.png",note:"testimonial creative (de)"},
+      {type:"img",file:"bobiotics-5.png",label:"Screenshot 10.01.05.png",note:"anti-itch benefits (nl)"},
+      {type:"img",file:"bobiotics-6.png",label:"Westie.png",note:"key visual"}
+    ],
+    metrics:[["dach","market entry"],["3","core angles tested"],["full","art direction"]]
+  },
+  {
+    id:"atelierramatuelle",
+    name:"atelierramatuelle",
+    tag:"beauty & wellness · co-founder",
+    period:"jul 2023 — oct 2024",
+    card:"took a beauty & wellness brand from idea to an €800k selling machine on a 300k+ ad budget across meta, tiktok and snapchat.",
+    tags:["head of marketing","€800k revenue","creative matrix","influence"],
+    role:["head of marketing & co-founder","creative testing matrix","full-funnel paid social","influencer campaigns","ugc sourcing"],
+    deliverables:["brand & creative system","paid social across 3 platforms","awareness-based test matrix","€30k influence campaigns","organic + paid content engine"],
+    lede:"i co-founded a beauty & wellness brand and ran the marketing that turned an idea into €800k in revenue — applying my own creative testing matrix built on customer awareness levels.",
+    problem:["beauty is one of the most saturated d2c categories there is. a new brand with no audience and no proof has to win attention and trust at the same time, profitably, against players spending many times its budget.","the job: build a paid social engine that could scale spend without watching roas collapse."],
+    insight:["the brands that scale in beauty don't run 'better ads' — they run the right message to the right awareness level. someone who's never heard of you needs a different hook than someone comparing you to three competitors.","so i stopped testing creatives at random and started testing against stages of awareness — which made every test tell me something i could act on."],
+    pull:"i didn't test ads. i tested <span class='hl'>messages against awareness levels</span> — and let the data scale the winners.",
+    strategy:["i built a creative testing matrix mapped to awareness stages, then fed it constantly with fresh angles, hooks and formats. winners scaled, losers were cut fast, and the structure meant i always knew why something worked.","alongside paid, i orchestrated large-scale influencer campaigns (€30k) and ran ugc sourcing to keep both the organic presence and the paid creative pipeline full — so the ads always felt native, not like ads."],
+    quote:{t:"from an idea to a sales machine generating €800,000 in revenue.",c:"atelierramatuelle — 15 months"},
+    media:[
+      {type:"video",file:"atelierramatuelle-video-1.mp4",label:"VideoAd - AtelierRamatuelle.mov",note:"hero video ad"}
+    ],
+    metrics:[["€800K","revenue"],["€300K+","ad spend managed"],["€30K","influence campaigns"]]
+  },
+  {
+    id:"solvfjord",
+    name:"sølvfjord",
+    tag:"connected watches · founder",
+    period:"feb 2023 — feb 2024",
+    card:"founded a connected-watch brand and owned the full e-commerce chain — €300k in sales on €90k spend in a brutally competitive market.",
+    tags:["founder","shopify","meta ads","cro"],
+    role:["founder & creative strategist","shopify store build","branding & art direction","meta ads acquisition","kpi analysis & cro"],
+    deliverables:["full shopify store","brand identity","conversion-optimized funnel","meta ads strategy","roas / cpa reporting"],
+    lede:"i founded a connected-watch brand and ran the entire e-commerce value chain myself — from the shopify build to a meta acquisition strategy that drove €300k in sales on €90k of spend.",
+    problem:["consumer electronics is one of the hardest categories for a small d2c brand: high price sensitivity, fierce competition, and buyers who comparison-shop relentlessly. founding sølvfjord meant competing for attention against giants with unlimited budgets.","i had to make a new watch brand feel credible and desirable — and convert cold traffic profitably — with no team and a finite budget."],
+    insight:["in a category where everyone shouts specs, trust and perceived quality do more conversion work than feature lists. the win was in the funnel and the framing — making the product feel premium and the purchase feel safe — not in louder ads.","this is where i sharpened the discipline that still drives my work: read the kpis (roas, cpa), find the friction, fix the conversion path, repeat."],
+    pull:"€300k in sales on €90k spend — built by <span class='hl'>fixing the funnel, not flooding the feed.</span>",
+    strategy:["i built the shopify store and conversion funnel from scratch, defined the branding and art direction, then ran meta ads as the single acquisition channel — keeping the system tight enough to read every result clearly.","every euro was tracked against roas and cpa. i treated the funnel as the product: testing the offer, the landing experience and the creative until the unit economics worked in a hostile, international market."],
+    quote:{t:"i managed the entire e-commerce value chain — store, brand, acquisition and optimization.",c:"sølvfjord — founder"},
+    media:[
+      {type:"note",file:"solvfjord-1.png",label:"solvfjord-1.png",note:"ADD SØLVFJORD CREATIVES HERE — store screenshots, ad creatives, product shots, branding"}
+    ],
+    metrics:[["€300K","sales generated"],["€90K","ad spend"],["~3.3x","blended roas"]]
+  },
+  {
+    id:"proestrellas",
+    name:"proestrellas / tæppstars",
+    tag:"review-tech · co-founder",
+    period:"feb 2025 — aug 2026",
+    card:"co-founded an nfc/qr review-collection startup — built the system, the brand, and €25k in revenue via targeted meta ads.",
+    tags:["co-founder","head of growth","meta ads","pmf"],
+    role:["co-founder & head of growth","proprietary redirect system","brand identity","meta ads acquisition","field sales team"],
+    deliverables:["nfc + qr hardware product","web redirection system","brand identity (multi-market)","meta ads campaigns","field sales operation"],
+    lede:"i co-founded a startup reinventing how businesses collect customer reviews — physical nfc & qr plates — and led the entire launch from product to a €25k-revenue, product-market-fit validation.",
+    problem:["local businesses know reviews drive customers, but getting them is a constant, manual struggle. we bet on a physical solution: a tap-to-review nfc/qr plate that makes leaving a google review a three-second action.","launching meant building everything at once — the hardware logic, the software behind it, the brand, the acquisition, and the proof that anyone would actually buy it."],
+    insight:["the product sold best when the friction it removed was made visible — 'more reviews in two weeks than in a year'. the creative job was to dramatize the before/after, not explain the technology.","across markets (spanish proestrellas, norwegian tæppstars) the same insight held: sell the outcome — more reviews, more customers — not the nfc chip."],
+    pull:"i sold the <span class='hl'>outcome, not the chip</span> — and validated pmf with a field sales team i built and led.",
+    strategy:["i designed a proprietary web-redirection system and the full brand identity, then drove acquisition with targeted meta ads that generated €25k in revenue in a few months.","to validate product-market fit i recruited and directed a field sales team — pairing performance marketing with real-world selling to prove demand on the ground."],
+    quote:{t:"i've received more reviews in two weeks than in a whole year. it's crazy, thank you!",c:"customer testimonial — es market"},
+    media:[
+      {type:"video",file:"proestrellas-video-1.mp4",label:"VideoAd - Taeppstars.mp4",note:"video ad"},
+      {type:"img",file:"proestrellas-1.png",label:"Image Ad - Taeppstars.png",note:"key ad — nfc plate (no)"},
+      {type:"img",file:"proestrellas-2.png",label:"Product-Shockpresentation.png",note:"product presentation (es)"},
+      {type:"img",file:"proestrellas-3.png",label:"muchasresenas.png",note:"testimonial creative (es)"}
+    ],
+    metrics:[["€25K","revenue in months"],["2","markets · es / no"],["pmf","validated"]]
+  },
+  {
+    id:"oslowuff",
+    name:"oslowuff",
+    tag:"d2c pet · consultant",
+    period:"jan 2024 — dec 2024",
+    card:"advised an investor launching a custom pet-products d2c brand — €150k revenue, full strategy and acquisition on meta & snapchat.",
+    tags:["consultant","creative strategist","meta · snapchat","print-on-demand"],
+    role:["creative strategist (consultant)","full marketing strategy","meta & snapchat acquisition","print-on-demand integration","€35k budget management"],
+    deliverables:["go-to-market strategy","paid social creative","meta + snapchat campaigns","pod technical integration","performance reporting"],
+    lede:"i advised an investor on launching a d2c brand of personalized pet products — owning the full marketing strategy and acquisition, and generating €150k in revenue.",
+    problem:["personalized pet products are an emotional, high-conversion category — but personalization adds operational complexity: every order is unique, and the tech behind it has to be seamless or the margin disappears.","the investor had capital and a product idea but needed someone to own strategy, acquisition and the technical plumbing end to end."],
+    insight:["personalized pet creative lives or dies on emotional specificity — the more the ad feels like it's about your dog, the higher it converts. generic pet stock imagery doesn't move people; the customization preview does.","so the creative leaned hard into the personalized output itself as the hook — the product is the ad."],
+    pull:"the product was the ad — <span class='hl'>personalization as the hook,</span> not an afterthought.",
+    strategy:["i led the full marketing strategy and ran acquisition across meta and snapchat ads on a €35k budget, building creative around the emotional, personalized payoff.","in parallel i managed the technical integration of the print-on-demand solution — making sure the fulfilment chain held up as volume scaled, so growth didn't break the operation."],
+    quote:{t:"€150,000 in revenue — full strategy and acquisition, from creative to print-on-demand.",c:"oslowuff — consulting engagement"},
+    media:[
+      {type:"img",file:"oslowuff-1.png",label:"Alexis+DoormatOnside.png",note:"personalized doormat ad (no)"},
+      {type:"img",file:"oslowuff-2.webp",label:"product creative",note:"product creative"}
+    ],
+    metrics:[["€150K","revenue"],["€35K","ad spend · meta / snap"],["full","pod integration"]]
+  },
+  {
+    id:"magnette",
+    name:"magnette",
+    tag:"d2c homeware · founder",
+    period:"2026",
+    card:"my own brand of magnetic towels — d2c launch, brand, store and creative, live at laserviettemagnette.fr.",
+    tags:["founder","d2c","branding","shopify"],
+    role:["founder","brand & identity","shopify store","creative & acquisition"],
+    deliverables:["brand identity","shopify store","ad creative","go-to-market"],
+    lede:"my own d2c brand of magnetic towels — currently live at laserviettemagnette.fr. a product i'm building from the ground up, applying everything from the brands before it.",
+    problem:["a genuinely useful physical product still needs a reason to exist as a brand. magnette is where i apply my full playbook — positioning, store, creative, acquisition — to something i own end to end.","this is a live, ongoing project, so the case study grows as the brand does."],
+    insight:["homeware sells on demonstration: show the magnetic towel doing the one clever thing it does, and the value is instantly obvious. the creative strategy is built around that single satisfying proof.","more content and results to come as the launch matures."],
+    pull:"my own brand — where i run <span class='hl'>the full playbook end to end.</span>",
+    strategy:["i'm handling brand identity, the shopify store, the creative and the acquisition myself — the same chain i've run for clients, now on my own product.","detailed numbers and creative to be added as the launch progresses."],
+    quote:{t:"live now at laserviettemagnette.fr.",c:"magnette — 2026, ongoing"},
+    media:[
+      {type:"img",file:"magnette-1.png",label:"Image Ad- Magiskhand.png",note:"image ad creative"},
+      {type:"video",file:"magnette-video-1.mp4",label:"VideoAd- Magiskhand.mp4",note:"video ad creative"},
+      {type:"note",file:"magnette-2.png",label:"magnette-2.png",note:"ADD MAGNETTE STORE + RESULTS HERE"}
+    ],
+    metrics:[["live","laserviettemagnette.fr"],["2026","launch year"],["solo","full ownership"]]
+  }
+];
+
+const RESUME = [
+  {role:"creative strategist & media buyer",org:"bobiotics",date:"mar 2026 — jun 2026",desc:"led the german-market go-to-market for a dog supplement brand: positioning, creative angles, full art direction, dach copy adaptation and initial acquisition spend."},
+  {role:"marketing lead & lead designer",org:"arkeyz web design",date:"oct 2025 — present",desc:"hybrid role: digital marketing strategy, ui/ux interfaces and optimized sales funnels — turning every touchpoint into measurable growth for clients."},
+  {role:"co-founder & head of growth",org:"proestrellas / tæppstars",date:"feb 2025 — aug 2026",desc:"nfc/qr review-collection startup. built a proprietary redirect system and brand, drove €25k revenue via meta ads, recruited and led a field sales team to validate pmf."},
+  {role:"creative strategist (consultant)",org:"oslowuff",date:"jan 2024 — dec 2024",desc:"custom pet-products d2c brand. full marketing strategy and acquisition on meta & snapchat (€35k budget), print-on-demand integration. €150k revenue."},
+  {role:"co-founder & head of marketing",org:"atelierramatuelle",date:"jul 2023 — oct 2024",desc:"beauty & wellness brand from idea to €800k revenue. €300k+ ad spend across meta/tiktok/snapchat, awareness-based creative matrix, €30k influence campaigns."},
+  {role:"founder & creative strategist",org:"sølvfjord",date:"feb 2023 — feb 2024",desc:"connected-watch brand. full e-commerce chain — shopify build, branding, meta acquisition. €300k sales on €90k spend, with roas/cpa optimization and cro."}
+];
+
+/* ---------------- RENDER ---------------- */
+const $ = s=>document.querySelector(s);
+const IMG = "images/";
+function ph(txt,label){return `<div class="ph">${txt}<span class="tag">${label}</span></div>`;}
+const slotMarkup = m=>{
+  const cls = m.type==="video" ? "slot vid" : (m.type==="note" ? "slot wide" : "slot sq");
+  if(m.type==="video"){
+    const inner = m.file
+      ? `<video src="${IMG}${m.file}" controls muted loop playsinline onerror="this.replaceWith(window.__phEl('${m.note.replace(/'/g,"\\'")}','${m.label.replace(/'/g,"\\'")}',true))"></video>`
+      : `<div class="ph"><span class="play">▶</span>${m.note}<span class="tag">${m.label}</span></div>`;
+    return `<div class="${cls}">${inner}</div>`;
+  }
+  // img or note → both try to load an image, fall back to a labeled placeholder
+  const fallbackTxt = m.note;
+  const inner = m.file
+    ? `<img src="${IMG}${m.file}" alt="${m.note.replace(/"/g,'')}" onerror="this.replaceWith(window.__phEl('${m.note.replace(/'/g,"\\'")}','${m.label.replace(/'/g,"\\'")}',false))">`
+    : `<div class="ph">${fallbackTxt}<span class="tag">${m.label}</span></div>`;
+  return `<div class="${cls}">${inner}</div>`;
+};
+// builds a placeholder element when an image is missing
+window.__phEl = (txt,label,isVideo)=>{
+  const d = document.createElement("div");
+  d.className = "ph";
+  d.innerHTML = (isVideo?'<span class="play">▶</span>':'') + txt + '<span class="tag">'+label+'</span>';
+  return d;
+};
+
+function buildTiles(){
+  const g = $("#tileGrid");
+  g.innerHTML = PROJECTS.map((p,i)=>{
+    const first = p.media[0];
+    const thumb = first.file
+      ? `<img src="${IMG}${first.file}" alt="${p.name}" onerror="this.replaceWith(window.__phEl('${first.note.replace(/'/g,"\\'")}','${first.label.replace(/'/g,"\\'")}',false))">`
+      : `<div class="ph">${first.label}</div>`;
+    return `
+    <a class="tile reveal" data-case="${p.id}" href="#${p.id}">
+      <span class="arrow">↗</span>
+      <div class="thumb">${thumb}</div>
+      <div class="body">
+        <span class="num">0${i+1} · ${p.tag}</span>
+        <h3>${p.name}</h3>
+        <p>${p.card}</p>
+        <div class="tags">${p.tags.map(t=>`<span>${t}</span>`).join("")}</div>
+      </div>
+    </a>`;}).join("");
+}
+
+function buildResume(){
+  $("#resumeList").innerHTML = RESUME.map(r=>`
+    <div class="reveal" style="border-top:1px solid var(--line);padding:24px 0;display:grid;grid-template-columns:1fr 2fr;gap:20px">
+      <div>
+        <div style="font-weight:700;font-size:18px;letter-spacing:-.01em;text-transform:lowercase">${r.role}</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em;color:var(--grey);text-transform:uppercase;margin-top:6px">${r.org}</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--grey);margin-top:4px">${r.date}</div>
+      </div>
+      <p style="font-size:15.5px;color:#2f2f2f;line-height:1.6">${r.desc}</p>
+    </div>`).join("");
+}
+
+function buildCase(id){
+  const i = PROJECTS.findIndex(p=>p.id===id);
+  const p = PROJECTS[i];
+  const prev = PROJECTS[(i-1+PROJECTS.length)%PROJECTS.length];
+  const next = PROJECTS[(i+1)%PROJECTS.length];
+  const vids = p.media.filter(m=>m.type==="video");
+  const imgs = p.media.filter(m=>m.type==="img");
+  const notes = p.media.filter(m=>m.type==="note");
+
+  let mediaHTML = "";
+  if(vids.length){
+    mediaHTML += `<p class="eyebrow" style="margin:0 0 14px">video creative</p><div class="gallery ${vids.length>=3?'g3':vids.length===2?'g2':''}">${vids.map(slotMarkup).join("")}</div>`;
+  }
+  if(imgs.length){
+    mediaHTML += `<p class="eyebrow" style="margin:24px 0 14px">static creative</p><div class="gallery ${imgs.length>=3?'g3':imgs.length===2?'g2':''}">${imgs.map(slotMarkup).join("")}</div>`;
+  }
+  if(notes.length){
+    mediaHTML += `<div class="gallery">${notes.map(slotMarkup).join("")}</div>`;
+  }
+
+  const heroFirst = p.media[0];
+  const heroInner = heroFirst.file
+    ? `<img src="${IMG}${heroFirst.file}" alt="${p.name}" onerror="this.replaceWith(window.__phEl('${heroFirst.label.replace(/'/g,"\\'")} — hero','${heroFirst.label.replace(/'/g,"\\'")}',false))">`
+    : `<div class="ph" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;color:#908d83;text-transform:uppercase">${heroFirst.label} — hero</div>`;
+
+  $("#caseInner").innerHTML = `
+    <a class="back" href="#" data-go="home">← all work</a>
+    <p class="case-tag reveal">${p.tag} · ${p.period}</p>
+    <h1 class="reveal">${p.name}</h1>
+    <p class="lede reveal">${p.lede}</p>
+
+    <div class="case-hero reveal">${heroInner}</div>
+
+    <div class="facts reveal">
+      <div class="col"><h4>my role</h4><ul>${p.role.map(r=>`<li>${r}</li>`).join("")}</ul></div>
+      <div class="col"><h4>deliverables</h4><ul>${p.deliverables.map(d=>`<li>${d}</li>`).join("")}</ul></div>
+    </div>
+
+    <div class="block reveal"><span class="eyebrow">the problem</span><h2>the starting point</h2>${p.problem.map(t=>`<p>${t}</p>`).join("")}</div>
+
+    <div class="metrics reveal">${p.metrics.map(m=>`<div><div class="n">${m[0]}</div><div class="l">${m[1]}</div></div>`).join("")}</div>
+
+    <div class="block reveal"><span class="eyebrow">the insight</span><h2>what actually moved the number</h2>${p.insight.map(t=>`<p>${t}</p>`).join("")}</div>
+
+    <p class="pull reveal">${p.pull}</p>
+
+    <div class="block reveal"><span class="eyebrow">the strategy</span><h2>how i built it</h2>${p.strategy.map(t=>`<p>${t}</p>`).join("")}</div>
+
+    <blockquote class="quote reveal">"${p.quote.t}"<cite>${p.quote.c}</cite></blockquote>
+
+    <div class="reveal"><p class="eyebrow" style="margin:0 0 6px">the work</p><h2 style="font-size:clamp(24px,3.2vw,38px);font-weight:700;letter-spacing:-.02em;text-transform:lowercase;margin-bottom:24px">selected creative</h2>${mediaHTML}</div>
+
+    <div class="casenav">
+      <a href="#${prev.id}" data-case="${prev.id}"><span class="lbl">previous</span>${prev.name}</a>
+      <a href="#${next.id}" data-case="${next.id}"><span class="lbl">next</span>${next.name}</a>
+    </div>
+  `;
+}
+
+/* ---------------- ROUTER ---------------- */
+function show(view){
+  document.querySelectorAll(".view").forEach(v=>v.classList.remove("active"));
+  $("#"+view).classList.add("active");
+  document.querySelectorAll(".navlinks a").forEach(a=>a.classList.toggle("active",a.dataset.go===view||(view==="case"&&a.dataset.go==="home")));
+  window.scrollTo({top:0,behavior:"instant" in window?"instant":"auto"});
+  observeReveals();
+}
+function openCase(id){ buildCase(id); show("case"); observeReveals(); }
+
+document.addEventListener("click",e=>{
+  const caseEl = e.target.closest("[data-case]");
+  const goEl = e.target.closest("[data-go]");
+  if(caseEl){ e.preventDefault(); openCase(caseEl.dataset.case); return; }
+  if(goEl){ e.preventDefault(); show(goEl.dataset.go); history.replaceState(null,"", goEl.dataset.go==="home"?"#":"#"+goEl.dataset.go); return; }
+});
+
+/* ---------------- REVEAL ---------------- */
+let io;
+function observeReveals(){
+  if(io) io.disconnect();
+  io = new IntersectionObserver(es=>{
+    es.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target);} });
+  },{threshold:.12,rootMargin:"0px 0px -40px 0px"});
+  document.querySelectorAll(".view.active .reveal").forEach(el=>io.observe(el));
+}
+
+/* ---------------- INIT ---------------- */
+buildTiles();
+buildResume();
+// deep-link
+const hash = location.hash.replace("#","");
+if(hash && PROJECTS.some(p=>p.id===hash)){ openCase(hash); }
+else if(["about","resume"].includes(hash)){ show(hash); }
+else { observeReveals(); }
+</script>
+</body>
+</html>
