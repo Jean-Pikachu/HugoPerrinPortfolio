@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>hugo perrin — creative strategist</title>
-<meta name="description" content="Hugo Perrin is a creative strategist and media buyer scaling D2C brands internationally — psychology-driven creative, paid social, and conversion." />
+<title>hugo perrin, creative strategist</title>
+<meta name="description" content="Hugo Perrin is a creative strategist and media buyer scaling D2C brands internationally, psychology-driven creative, paid social, and conversion." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Archivo+Narrow:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -149,6 +149,11 @@
     text-transform:lowercase;margin:14px 0 0;max-width:20ch;
   }
   .case .lede{margin-top:24px;max-width:60ch;font-size:clamp(18px,2.1vw,23px);color:#2c2c2c;line-height:1.5}
+  .plink{
+    display:inline-block;font-weight:600;font-size:16px;text-transform:lowercase;letter-spacing:-.01em;
+    border-bottom:1.5px solid var(--ink);padding-bottom:2px;transition:opacity .2s;
+  }
+  .plink:hover{opacity:.55}
 
   .case-hero{
     margin:clamp(36px,5vw,64px) 0;aspect-ratio:16/8;width:100%;
@@ -168,7 +173,7 @@
   .facts h4{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--grey);margin-bottom:14px}
   .facts ul{list-style:none;display:flex;flex-direction:column;gap:9px}
   .facts li{font-size:16px;font-weight:500;padding-left:18px;position:relative}
-  .facts li::before{content:"—";position:absolute;left:0;color:var(--grey)}
+  .facts li::before{content:"·";position:absolute;left:0;color:var(--grey)}
   @media(max-width:640px){
     .facts{grid-template-columns:1fr}
     .facts .col:first-child{border-right:0;border-bottom:1px solid var(--line);padding-right:0}
@@ -186,6 +191,7 @@
     text-transform:lowercase;margin:clamp(36px,5vw,64px) 0;max-width:24ch;
   }
   .pull .hl{background:linear-gradient(transparent 62%, #e7e3d6 62%)}
+  .pull .pnote{display:block;margin-top:16px;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:400;letter-spacing:.06em;color:var(--grey);text-transform:lowercase}
 
   .metrics{
     display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:clamp(36px,5vw,64px) 0;
@@ -202,12 +208,34 @@
   .g2{grid-template-columns:1fr 1fr}
   .g3{grid-template-columns:repeat(3,1fr)}
   @media(max-width:640px){.g2,.g3{grid-template-columns:1fr}}
+
+  /* creative sliders */
+  .slider{margin:clamp(28px,4vw,48px) 0}
+  .shead{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;gap:16px}
+  .snav{display:flex;gap:8px}
+  .snav button{
+    width:38px;height:38px;border:1px solid var(--ink);background:transparent;color:var(--ink);
+    font-size:16px;cursor:pointer;transition:background .2s,color .2s;line-height:1;
+  }
+  .snav button:hover{background:var(--ink);color:var(--paper)}
+  .strack{
+    display:flex;gap:clamp(12px,1.4vw,18px);overflow-x:auto;
+    scroll-snap-type:x mandatory;scrollbar-width:none;-ms-overflow-style:none;
+    padding-bottom:4px;
+  }
+  .strack::-webkit-scrollbar{display:none}
+  .strack .slot{flex:0 0 auto;scroll-snap-align:start;min-height:0}
+  .strack .slot.vid{width:min(280px,72vw)}
+  .strack .slot.sq{width:min(400px,80vw)}
+  .strack .slot.r45{width:min(340px,76vw)}
+  .strack .slot.wide{width:min(560px,86vw)}
   .slot{
     background:var(--stone);border:1px solid var(--line);position:relative;overflow:hidden;
     display:flex;align-items:center;justify-content:center;min-height:200px;
   }
   .slot.vid{aspect-ratio:9/16}
   .slot.sq{aspect-ratio:1/1}
+  .slot.r45{aspect-ratio:4/5}
   .slot.wide{aspect-ratio:16/9}
   .slot img,.slot video{width:100%;height:100%;object-fit:cover}
   .slot .ph{text-align:center;padding:18px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;color:#908d83;text-transform:uppercase;line-height:1.6}
@@ -263,7 +291,7 @@
 <body>
 <header>
   <nav>
-    <a class="brand" href="#" data-go="home">hugo perrin<span> — creative strategist</span></a>
+    <a class="brand" href="#" data-go="home">hugo perrin<span>, creative strategist</span></a>
     <div class="navlinks">
       <a href="#" data-go="home" class="active">work</a>
       <a href="#" data-go="about">about</a>
@@ -276,9 +304,9 @@
   <!-- ============ HOME ============ -->
   <section class="view active" id="home">
     <div class="hero">
-      <p class="eyebrow reveal">creative strategist · media buyer · d2c</p>
-      <h1 class="reveal">i turn consumer psychology into <em>paid media that scales.</em></h1>
-      <p class="sub reveal">i build creative frameworks grounded in data — from customer pain points to iterative testing matrices — and run the acquisition behind them. the goal is always the same: push roas without flattening the brand.</p>
+      <p class="eyebrow reveal">as a great man once said</p>
+      <h1 class="reveal">"advertising is like <em>poison gas."</em></h1>
+      <p class="sub reveal">It spreads, it sticks, and you can't look away. I'm Hugo Perrin, creative strategist & media buyer. I pair consumer psychology with paid media to scale D2C brands internationally: creative frameworks grounded in data, from customer pain points to iterative testing matrices, always pushing ROAS without flattening the brand.</p>
       <div class="meta reveal">
         <span>based in <b>réunion</b> · open to v.i.e worldwide</span>
         <span>fr · en · es</span>
@@ -311,10 +339,11 @@
     <div class="about">
       <div>
         <p class="eyebrow reveal">about</p>
-        <h1 class="reveal">hi, i'm hugo — i make brands impossible to scroll past.</h1>
-        <p class="reveal">i'm a creative strategist and media buyer who pairs consumer psychology with performance marketing to scale d2c brands internationally. across six brands i've generated more than a million euros in revenue and managed over half a million in ad spend on meta, tiktok and snapchat.</p>
-        <p class="reveal">my method starts with the customer, not the creative. i map stages of awareness, dig into frustration points, then build iterative test matrices that tell me which angle, hook and format actually move the number. from there i handle the full chain — art direction, scriptwriting, copy adaptation to local codes, tracking setup, and the media buying itself.</p>
-        <p class="reveal">i've launched into the french, dach and nordic markets, built shopify stores from scratch, and co-founded companies from idea to product-market fit. i'm a french citizen under 29 — fully eligible for the v.i.e program — and i'm looking for a mission with real autonomy, real budgets, and real ownership, anywhere in the world.</p>
+        <h1 class="reveal">hi, i'm hugo. i make brands impossible to scroll past.</h1>
+        <p class="reveal">I'm a creative strategist and media buyer who pairs consumer psychology with performance marketing to scale D2C brands internationally. Across six brands I've generated more than a million euros in revenue and managed over half a million in ad spend on Meta, TikTok and Snapchat.</p>
+        <p class="reveal">My method starts with the customer, not the creative. I map stages of awareness, dig into frustration points, then build iterative test matrices that tell me which angle, hook and format actually move the number. From there I handle the full chain, art direction, scriptwriting, copy adaptation to local codes, tracking setup, and the media buying itself.</p>
+        <p class="reveal">I've launched into the French, DACH and Nordic markets, built Shopify stores from scratch, and co-founded companies from idea to product-market fit. I'm a French citizen under 29, fully eligible for the V.I.E program, and I'm looking for a mission with real autonomy, real budgets, and real ownership, anywhere in the world.</p>
+        <p class="reveal">Off duty, I'm the same person: I travel (launching brands in markets whose language I don't speak is a travel story in itself), I switch between three languages daily, and I chase sport and strong sensations. The appetite for calculated risk is not a metaphor, it's how I do media buying too.</p>
       </div>
       <aside class="side reveal">
         <div class="portrait"><img src="images/portrait.jpg" alt="Hugo Perrin" onerror="this.replaceWith(window.__phEl('replace with photo','portrait.jpg',false))"></div>
@@ -334,6 +363,12 @@
           <li>english <span>fluent</span></li>
           <li>spanish <span>fluent</span></li>
         </ul>
+        <h4>off duty</h4>
+        <ul>
+          <li>travel <span>worldwide</span></li>
+          <li>sport <span>daily</span></li>
+          <li>strong sensations <span>always</span></li>
+        </ul>
         <h4>looking for</h4>
         <ul>
           <li>creative strategist <span>senior</span></li>
@@ -349,7 +384,13 @@
     <div class="case" style="padding-bottom:clamp(60px,9vw,120px)">
       <p class="eyebrow reveal" style="margin-top:clamp(28px,5vw,56px)">resume</p>
       <h1 class="reveal" style="margin-bottom:8px">experience.</h1>
-      <p class="lede reveal">the short version. full pdf available on request.</p>
+      <p class="lede reveal">The short version below, and the machine-readable one as a PDF.</p>
+
+      <div class="reveal" style="display:flex;flex-wrap:wrap;gap:14px;margin-top:28px">
+        <a href="resume.pdf" download style="border:1px solid var(--ink);padding:13px 22px;font-weight:600;font-size:15px;text-transform:lowercase;transition:background .2s,color .2s" onmouseover="this.style.background='var(--ink)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='var(--ink)'">download pdf resume ↓</a>
+        <a href="mailto:hp.hugoperrinpro@gmail.com" style="border:1px solid var(--line);padding:13px 22px;font-size:15px;color:var(--grey)">hp.hugoperrinpro@gmail.com</a>
+        <a href="https://www.linkedin.com" target="_blank" rel="noopener" style="border:1px solid var(--line);padding:13px 22px;font-size:15px;color:var(--grey)">linkedin ↗</a>
+      </div>
 
       <div id="resumeList" style="margin-top:clamp(36px,5vw,64px)"></div>
 
@@ -357,11 +398,11 @@
       <div class="facts" style="border-top:0;margin-top:18px">
         <div class="col">
           <h4>e-commerce mentoring · 2022–2023</h4>
-          <p style="font-size:15.5px;color:#2f2f2f">market research, competitive analysis and e-commerce strategy under an entrepreneur's guidance.</p>
+          <p style="font-size:15.5px;color:#2f2f2f">Market research, competitive analysis and e-commerce strategy under an entrepreneur's guidance.</p>
         </div>
         <div class="col">
           <h4>bsc chemistry · 2018–2021</h4>
-          <p style="font-size:15.5px;color:#2f2f2f">université de la réunion. analytical rigor that still shapes how i read data.</p>
+          <p style="font-size:15.5px;color:#2f2f2f">Université de La Réunion. Analytical rigor that still shapes how I read data.</p>
         </div>
       </div>
     </div>
@@ -391,25 +432,30 @@
 const PROJECTS = [
   {
     id:"bobiotics",
+    hero:"bobiotics-hero.png",
+    imgFirst:true,
+    imgRatio:"45",
     name:"bobiotics",
     tag:"go-to-market · dach",
     period:"mar 2026 — jun 2026",
-    card:"led the german-market launch of a dog supplement brand — positioning, angles, art direction and the first acquisition spend.",
+    card:"Led the German-market launch of a dog supplement brand, positioning, angles, art direction and the first acquisition spend.",
     tags:["creative strategy","art direction","meta ads","dach"],
     role:["positioning & go-to-market","creative angles & scriptwriting","full art direction","copy adaptation (dach codes)","initial media buying"],
     deliverables:["market positioning","static & video ad creative","comparison-ad framework","localized copy (de / nl)","acquisition launch"],
-    lede:"a clinically-formulated dog supplement brand had a strong product and zero foothold in germany. i built the go-to-market that turned it into a market it could actually sell into.",
-    problem:["bobiotics makes anti-itch & allergy supplements for dogs — a category dominated by prescription drugs like apoquel and cortisone. entering the dach and benelux markets, the brand had a credible, vet-developed product but no positioning, no creative system and no acquisition engine.","the challenge wasn't awareness of the problem — every owner of an itchy dog knows the pain. it was convincing them that a natural supplement could replace what their vet prescribes."],
-    insight:["dog owners weren't shopping for ingredients — they were exhausted by the cycle of expensive vet visits, side effects, and symptoms that always came back. the real lever was reframing the choice: not 'supplement vs. nothing', but 'natural root-cause fix vs. aggressive chemistry that only masks symptoms'.","that reframe became the spine of the whole creative system — most visibly in the comparison ads positioning bobiotics directly against apoquel and cortisone."],
-    pull:"i positioned a supplement as <span class='hl'>the natural alternative to aggressive chemistry</span> — not as a 'nice to have'.",
-    strategy:["i defined the positioning, then built a creative matrix across angles: the comparison play (vs. apoquel / cortisone), the mechanism story (gut health → less itching), and the emotional relief angle (an owner who finally stopped worrying).","i handled full art direction on the visuals, adapted every line of copy to dach and dutch cultural codes, and deployed the initial acquisition budget to find the angles that scaled."],
-    quote:{t:"finally no more worrying about the constant scratching. the formula is vet-developed and actually affordable.",c:"ad concept — testimonial angle, de market"},
+    lede:"A clinically-formulated dog supplement brand had a strong product and zero foothold in Germany. I built the go-to-market that turned it into a market it could actually sell into.",
+    problem:["Bobiotics makes anti-itch & allergy supplements for dogs, a category dominated by prescription drugs like Apoquel and cortisone. Entering the DACH and Benelux markets, the brand had a credible, vet-developed product but no positioning, no creative system and no acquisition engine.","The challenge wasn't awareness of the problem, every owner of an itchy dog knows the pain. It was convincing them that a natural supplement could replace what their vet prescribes."],
+    insight:["The market was worth the fight: Germany is Europe's largest pet market, roughly 21% of households own a dog, and pet supplements are one of the fastest-growing segments, around 7-9% a year in value. The demand existed; the natural-alternative positioning didn't.","Dog owners weren't shopping for ingredients, they were exhausted by the cycle of expensive vet visits, side effects, and symptoms that always came back. The real lever was reframing the choice: not 'supplement vs. Nothing', but 'natural root-cause fix vs. Aggressive chemistry that only masks symptoms'.","That reframe became the spine of the whole creative system, most visibly in the comparison ads positioning Bobiotics directly against Apoquel and cortisone."],
+    pull:"i positioned a supplement as <span class='hl'>the natural alternative to aggressive chemistry</span>, not as a 'nice to have'.",
+    strategy:["I defined the positioning, then built a creative matrix across angles: the comparison play (vs. Apoquel / cortisone), the mechanism story (gut health → less itching), and the emotional relief angle (an owner who finally stopped worrying).","I handled full art direction on the visuals, adapted every line of copy to DACH and Dutch cultural codes, and deployed the initial acquisition budget to find the angles that scaled."],
+    quote:{t:"Finally no more worrying about the constant scratching. The formula is vet-developed and actually affordable.",c:"Ad concept, testimonial angle, de market"},
     media:[
+      {type:"video",url:"https://cdn.shopify.com/videos/c/o/v/b562e1a13408421ba2bfb1c995dfc2a6.mp4",label:"video creative 1",note:"video creative #1"},
+      {type:"video",url:"https://cdn.shopify.com/videos/c/o/v/ba2e9b2903b842459b328be8d8649729.mp4",label:"video creative 2",note:"video creative #2"},
       {type:"video",file:"bobiotics-video-1.mp4",label:"Nowheretochange2-tu.mp4",note:"hook / pas video ad"},
       {type:"video",file:"bobiotics-video-2.mp4",label:"Pawcastv1-Full.mp4",note:"podcast-style ugc ad"},
       {type:"video",file:"bobiotics-video-3.mp4",label:"Animation Ad v2 h2.mp4",note:"motion / animation ad"},
-      {type:"img",file:"bobiotics-1.png",label:"2302Comparison3.png",note:"comparison ad — vs cortisone (de)"},
-      {type:"img",file:"bobiotics-2.png",label:"2302Comparison1-169.png",note:"comparison ad — vs apoquel (de)"},
+      {type:"img",file:"bobiotics-1.png",label:"2302Comparison3.png",note:"comparison ad, vs cortisone (de)"},
+      {type:"img",file:"bobiotics-2.png",label:"2302Comparison1-169.png",note:"comparison ad, vs apoquel (de)"},
       {type:"img",file:"bobiotics-3.png",label:"ComparisonSquare.png",note:"fresh-dry vs standard kibble"},
       {type:"img",file:"bobiotics-4.png",label:"Screenshot 10.00.21.png",note:"testimonial creative (de)"},
       {type:"img",file:"bobiotics-5.png",label:"Screenshot 10.01.05.png",note:"anti-itch benefits (nl)"},
@@ -419,62 +465,77 @@ const PROJECTS = [
   },
   {
     id:"atelierramatuelle",
+    hero:"atelierramatuelle-hero.png",
     name:"atelierramatuelle",
-    tag:"beauty & wellness · co-founder",
+    tag:"beauty tech & wellness · co-founder",
     period:"jul 2023 — oct 2024",
-    card:"took a beauty & wellness brand from idea to an €800k selling machine on a 300k+ ad budget across meta, tiktok and snapchat.",
-    tags:["head of marketing","€800k revenue","creative matrix","influence"],
-    role:["head of marketing & co-founder","creative testing matrix","full-funnel paid social","influencer campaigns","ugc sourcing"],
-    deliverables:["brand & creative system","paid social across 3 platforms","awareness-based test matrix","€30k influence campaigns","organic + paid content engine"],
-    lede:"i co-founded a beauty & wellness brand and ran the marketing that turned an idea into €800k in revenue — applying my own creative testing matrix built on customer awareness levels.",
-    problem:["beauty is one of the most saturated d2c categories there is. a new brand with no audience and no proof has to win attention and trust at the same time, profitably, against players spending many times its budget.","the job: build a paid social engine that could scale spend without watching roas collapse."],
-    insight:["the brands that scale in beauty don't run 'better ads' — they run the right message to the right awareness level. someone who's never heard of you needs a different hook than someone comparing you to three competitors.","so i stopped testing creatives at random and started testing against stages of awareness — which made every test tell me something i could act on."],
-    pull:"i didn't test ads. i tested <span class='hl'>messages against awareness levels</span> — and let the data scale the winners.",
-    strategy:["i built a creative testing matrix mapped to awareness stages, then fed it constantly with fresh angles, hooks and formats. winners scaled, losers were cut fast, and the structure meant i always knew why something worked.","alongside paid, i orchestrated large-scale influencer campaigns (€30k) and ran ugc sourcing to keep both the organic presence and the paid creative pipeline full — so the ads always felt native, not like ads."],
-    quote:{t:"from an idea to a sales machine generating €800,000 in revenue.",c:"atelierramatuelle — 15 months"},
+    card:"Co-founded a beauty tech brand on the Norwegian market, €800k in revenue, built on local positioning and a creator machine when paid channels got expensive.",
+    tags:["head of marketing","€800k revenue","norway","creator outreach"],
+    role:["head of marketing & co-founder","norwegian market positioning","creator outreach & management","full-funnel paid social","awareness-based testing matrix"],
+    deliverables:["brand & creative system","€300k+ paid social across 3 platforms","structured creator outreach operation","€30k influence campaigns","ugc sourcing pipeline"],
+    lede:"I co-founded a beauty tech brand on the Norwegian market, hair styling electronics, massage devices and beauty accessories, and took it from an idea to €800k in revenue. When paid channels got expensive, I built the acquisition machine that didn't depend on them.",
+    problem:["Paid social is a rising-cost game: every quarter the same euro buys less attention. And beauty tech is demo-driven, a curling hot-air dryer or a lighted makeup case has to be seen working to be wanted, which makes creative expensive to produce and competition fierce on every impression.","The challenge: how do you keep scaling when your main acquisition channels become expensive? We had to find acquisition methods that earned attention instead of renting it."],
+    insight:["The market fundamentals were on our side: Norwegian online shoppers are among the world's biggest spenders, roughly €2,470 a year on average, and the 30-45 age bracket is the most active online buying group in the country. Exactly the beauty tech target.","The Norwegian beauty shelf splits in two: global premium imports at premium prices, or faceless drugstore products. Nobody owned the middle, a genuinely Norwegian, affordable option. That positioning became our edge: we weren't trying to outperform other brands creative-for-creative, we were the local, accessible choice in a market of expensive imports.","And our products were made for demonstration: a hair dryer with rotating sticks that curls as it dries, massage devices you can feel through the screen, a makeup case that lights up when it opens. Creators showing them at home, in Norwegian, made the positioning credible in a way no polished import campaign could imitate."],
+    pull:"we didn't out-shout the big brands, we positioned as <span class='hl'>the affordable norwegian brand</span> they couldn't be.",
+    strategy:["The catalog was deliberately demo-first: our top 3, the curling hair dryer, the massage device, and the lighted mirror makeup case, carried the brand, while we diversified around them with wigs, korean masks and makeup accessories to test new segments.","I built a structured creator outreach operation, identifying, contacting and managing Norwegian creators as a real acquisition channel, with briefs, deadlines and performance follow-up. €30k on influence campaigns plus continuous UGC sourcing. Paid stayed disciplined: my awareness-based testing matrix on Meta, TikTok and Snapchat kept the €300k+ budget accountable, the local positioning gave the ads their angle, creators gave them their proof, the matrix scaled what worked."],
+    quote:{t:"€28,000 on Black Friday 2023 alone.",c:"AtelierRamatuelle, peak trading day"},
     media:[
-      {type:"video",file:"atelierramatuelle-video-1.mp4",label:"VideoAd - AtelierRamatuelle.mov",note:"hero video ad"}
+      {type:"video",url:"https://cdn.shopify.com/videos/c/o/v/422aeef4762543b78379c34942121345.mp4",label:"video creative 1",note:"video creative #1"},
+      {type:"video",url:"https://cdn.shopify.com/videos/c/o/v/e907e5a6ed534c9e9d2a4465d9448f72.mp4",label:"video creative 2",note:"video creative #2"},
+      {type:"video",url:"https://cdn.shopify.com/videos/c/o/v/569798b85df745219343682a3ab40a63.mov",label:"video creative 3",note:"video creative #3"},
+      {type:"video",url:"https://cdn.shopify.com/videos/c/o/v/a54a90c4521f4c4692f0f96245b2bcac.mp4",label:"video creative 4",note:"video creative #4"},
+      {type:"img",file:"atelierramatuelle-1.png",label:"atelierramatuelle-1.png",note:"image creative #1"},
+      {type:"img",file:"atelierramatuelle-2.png",label:"atelierramatuelle-2.png",note:"image creative #2"},
+      {type:"img",file:"atelierramatuelle-3.png",label:"atelierramatuelle-3.png",note:"image creative #3"}
     ],
-    metrics:[["€800K","revenue"],["€300K+","ad spend managed"],["€30K","influence campaigns"]]
+    metrics:[["€800K","revenue"],["€300K+","ad spend managed"],["€28K","black friday 2023"]]
   },
   {
     id:"solvfjord",
+    hero:"solvfjord-hero.png",
     name:"sølvfjord",
     tag:"connected watches · founder",
     period:"feb 2023 — feb 2024",
-    card:"founded a connected-watch brand and owned the full e-commerce chain — €300k in sales on €90k spend in a brutally competitive market.",
-    tags:["founder","shopify","meta ads","cro"],
-    role:["founder & creative strategist","shopify store build","branding & art direction","meta ads acquisition","kpi analysis & cro"],
-    deliverables:["full shopify store","brand identity","conversion-optimized funnel","meta ads strategy","roas / cpa reporting"],
-    lede:"i founded a connected-watch brand and ran the entire e-commerce value chain myself — from the shopify build to a meta acquisition strategy that drove €300k in sales on €90k of spend.",
-    problem:["consumer electronics is one of the hardest categories for a small d2c brand: high price sensitivity, fierce competition, and buyers who comparison-shop relentlessly. founding sølvfjord meant competing for attention against giants with unlimited budgets.","i had to make a new watch brand feel credible and desirable — and convert cold traffic profitably — with no team and a finite budget."],
-    insight:["in a category where everyone shouts specs, trust and perceived quality do more conversion work than feature lists. the win was in the funnel and the framing — making the product feel premium and the purchase feel safe — not in louder ads.","this is where i sharpened the discipline that still drives my work: read the kpis (roas, cpa), find the friction, fix the conversion path, repeat."],
-    pull:"€300k in sales on €90k spend — built by <span class='hl'>fixing the funnel, not flooding the feed.</span>",
-    strategy:["i built the shopify store and conversion funnel from scratch, defined the branding and art direction, then ran meta ads as the single acquisition channel — keeping the system tight enough to read every result clearly.","every euro was tracked against roas and cpa. i treated the funnel as the product: testing the offer, the landing experience and the creative until the unit economics worked in a hostile, international market."],
-    quote:{t:"i managed the entire e-commerce value chain — store, brand, acquisition and optimization.",c:"sølvfjord — founder"},
+    card:"Bootstrapped a connected-watch brand in Norway, €300k in sales on €90k spend, in a market whose language I don't even speak.",
+    tags:["founder","norway","meta · snapchat","aggressive scaling"],
+    role:["founder & creative strategist","market research & positioning","shopify store build","meta & snapchat acquisition","aggressive budget scaling"],
+    deliverables:["norwegian market analysis","3 audience-specific product lines","localized store & copy (no)","image + short video ad system","klarna payment integration"],
+    lede:"I bootstrapped a connected-watch brand in Norway on Meta and Snapchat ads, validating product-market fit, three audiences deep, in a market whose language I don't speak. €300k in sales on €90k of spend.",
+    problem:["Global competition in connected watches gets fiercer every year, so positioning was everything. How do you find buyers for smartwatches when giants own the category? And how do you build a brand for customers you can't even talk to in their own language?","The market itself was the first strategic decision. Norway wasn't random: very few Norwegians have a shopping mall within 30 minutes of home, so most buying happens online, Norwegian online shoppers spend roughly €2,470 a year on average, among the highest in the world, with near-total internet penetration. Purchasing power per capita is among the world's strongest, the Norwegian krone was weak against the euro at the time, and after a full market analysis, I found no properly Norwegian smartwatch brand. A gap.","The language barrier turned out to be smaller than feared: Norwegian consumers are factual. Unlike French brands that lean on wordplay and humor, literal machine translations were enough to carry the message."],
+    insight:["Product-market fit didn't come from one product, it came from three distinct audiences, each validated separately. Indestructible watches for adventurers and DIY-ers ('finally a watch that survives everything'). Kids' watches for parents who want a simple way to stay in touch with their children. And watches with built-in earbuds for young, sporty buyers who want to run without their phone.","The earbud watches brought genuine innovation to the market, the wow effect did real work. Adding Klarna (pay-in-installments) removed the last friction on a high-ticket impulse buy. And for the kids' line, simply testing image ads was enough to expose real, unserved demand."],
+    pull:"i validated three product-market fits in a language i don't speak, with <span class='hl'>image ads that answer a problem.</span>",
+    strategy:["The method was deliberately simple: validate each product-market fit with image ads that speak directly to one audience and one problem, backed by short videos showing the product in action. No overproduction, just message-market match.","I adapted the payment stack to the market (Klarna installments), launched on a small Meta Ads budget, and read the signals fast. The media buying was aggressive by design: the moment performance showed up, I doubled the budget, then multiplied it by 10 to ride the wave while it lasted."],
+    quote:{t:"€8,000 in a single day, and a 10x ROAS held for several days straight in testing. That's the clearest scaling signal you can get.",c:"Sølvfjord, peak performance, Meta Ads"},
     media:[
-      {type:"note",file:"solvfjord-1.png",label:"solvfjord-1.png",note:"ADD SØLVFJORD CREATIVES HERE — store screenshots, ad creatives, product shots, branding"}
+      {type:"img",file:"solvfjord-1.png",label:"solvfjord-1.png",note:"best creative, indestructible line"},
+      {type:"img",file:"solvfjord-2.png",label:"solvfjord-2.png",note:"best creative, kids' watches"},
+      {type:"img",file:"solvfjord-3.png",label:"solvfjord-3.png",note:"best creative, earbud watches"},
+      {type:"video",url:"https://cdn.shopify.com/videos/c/o/v/432f35a654f6493f87461d178cd6456d.mp4",label:"video creative 1",note:"video creative #1"},
+      {type:"video",url:"https://cdn.shopify.com/videos/c/o/v/1345a260f0a043009c103f7741d1b0c8.mp4",label:"video creative 2",note:"video creative #2"},
+      {type:"video",url:"https://cdn.shopify.com/videos/c/o/v/29af5b88dff343da8d341a2d53568a19.mp4",label:"video creative 3",note:"video creative #3"},
+      {type:"video",url:"https://cdn.shopify.com/videos/c/o/v/8c3ee580decd4fecb2d7291d3642d3e6.mp4",label:"video creative 4",note:"video creative #4"}
     ],
-    metrics:[["€300K","sales generated"],["€90K","ad spend"],["~3.3x","blended roas"]]
+    metrics:[["€8K","best single day"],["10x","roas in testing"],["3","product-market fits validated"]]
   },
   {
     id:"proestrellas",
+    hero:"proestrellas-hero.png",
     name:"proestrellas / tæppstars",
     tag:"review-tech · co-founder",
     period:"feb 2025 — aug 2026",
-    card:"co-founded an nfc/qr review-collection startup — built the system, the brand, and €25k in revenue via targeted meta ads.",
+    card:"Co-founded an NFC/QR review-collection startup, built the system, the brand, and €25k in revenue via targeted Meta Ads.",
     tags:["co-founder","head of growth","meta ads","pmf"],
     role:["co-founder & head of growth","proprietary redirect system","brand identity","meta ads acquisition","field sales team"],
     deliverables:["nfc + qr hardware product","web redirection system","brand identity (multi-market)","meta ads campaigns","field sales operation"],
-    lede:"i co-founded a startup reinventing how businesses collect customer reviews — physical nfc & qr plates — and led the entire launch from product to a €25k-revenue, product-market-fit validation.",
-    problem:["local businesses know reviews drive customers, but getting them is a constant, manual struggle. we bet on a physical solution: a tap-to-review nfc/qr plate that makes leaving a google review a three-second action.","launching meant building everything at once — the hardware logic, the software behind it, the brand, the acquisition, and the proof that anyone would actually buy it."],
-    insight:["the product sold best when the friction it removed was made visible — 'more reviews in two weeks than in a year'. the creative job was to dramatize the before/after, not explain the technology.","across markets (spanish proestrellas, norwegian tæppstars) the same insight held: sell the outcome — more reviews, more customers — not the nfc chip."],
-    pull:"i sold the <span class='hl'>outcome, not the chip</span> — and validated pmf with a field sales team i built and led.",
-    strategy:["i designed a proprietary web-redirection system and the full brand identity, then drove acquisition with targeted meta ads that generated €25k in revenue in a few months.","to validate product-market fit i recruited and directed a field sales team — pairing performance marketing with real-world selling to prove demand on the ground."],
-    quote:{t:"i've received more reviews in two weeks than in a whole year. it's crazy, thank you!",c:"customer testimonial — es market"},
+    lede:"I co-founded a startup reinventing how businesses collect customer reviews, physical NFC & QR plates, and led the entire launch from product to a €25k-revenue, product-market-fit validation.",
+    problem:["Local businesses know reviews drive customers, but getting them is a constant, manual struggle. We bet on a physical solution: a tap-to-review NFC/QR plate that makes leaving a Google review a three-second action.","Launching meant building everything at once, the hardware logic, the software behind it, the brand, the acquisition, and the proof that anyone would actually buy it."],
+    insight:["The numbers behind brick-and-mortar customer behaviour are brutal: 97% of consumers read online reviews before choosing a local business, most start with Google reviews, and it takes about 10 reviews on average before someone trusts a business. Reviews aren't a nice-to-have, they're the storefront. Yet collecting them stays a manual, awkward struggle for most businesses.","The product sold best when the friction it removed was made visible, 'more reviews in two weeks than in a year'. The creative job was to dramatize the before/after, not explain the technology.","Across markets (Spanish ProEstrellas, Norwegian Tæppstars) the same insight held: sell the outcome, more reviews, more customers, not the NFC chip."],
+    pull:"i sold the <span class='hl'>outcome, not the chip</span>, and validated pmf with a field sales team i built and led.<span class='pnote'>(pmf = product market fit)</span>",
+    strategy:["The acquisition bet was to apply B2C direct-response principles to a B2B product. Business owners are real people: they scroll the same feeds as everyone else. So instead of classic B2B channels, we targeted them on social media with engaging, direct-response video ads, and that engine generated €25k in revenue in a few months.","Around it, I designed a proprietary web-redirection system and the full brand identity, and complemented the online engine with a field sales team I recruited and led, adding on-the-ground proof of demand to the numbers coming from the ads."],
+    quote:{t:"I've received more reviews in two weeks than in a whole year. It's crazy, thank you!",c:"Irena, Valencia"},
     media:[
       {type:"video",file:"proestrellas-video-1.mp4",label:"VideoAd - Taeppstars.mp4",note:"video ad"},
-      {type:"img",file:"proestrellas-1.png",label:"Image Ad - Taeppstars.png",note:"key ad — nfc plate (no)"},
+      {type:"img",file:"proestrellas-1.png",label:"Image Ad - Taeppstars.png",note:"key ad, nfc plate (no)"},
       {type:"img",file:"proestrellas-2.png",label:"Product-Shockpresentation.png",note:"product presentation (es)"},
       {type:"img",file:"proestrellas-3.png",label:"muchasresenas.png",note:"testimonial creative (es)"}
     ],
@@ -482,74 +543,89 @@ const PROJECTS = [
   },
   {
     id:"oslowuff",
+    hero:"oslowuff-hero.png",
+    imgRatio:"45",
     name:"oslowuff",
-    tag:"d2c pet · consultant",
+    tag:"d2c personalized pet products · consultant",
     period:"jan 2024 — dec 2024",
-    card:"advised an investor launching a custom pet-products d2c brand — €150k revenue, full strategy and acquisition on meta & snapchat.",
-    tags:["consultant","creative strategist","meta · snapchat","print-on-demand"],
-    role:["creative strategist (consultant)","full marketing strategy","meta & snapchat acquisition","print-on-demand integration","€35k budget management"],
-    deliverables:["go-to-market strategy","paid social creative","meta + snapchat campaigns","pod technical integration","performance reporting"],
-    lede:"i advised an investor on launching a d2c brand of personalized pet products — owning the full marketing strategy and acquisition, and generating €150k in revenue.",
-    problem:["personalized pet products are an emotional, high-conversion category — but personalization adds operational complexity: every order is unique, and the tech behind it has to be seamless or the margin disappears.","the investor had capital and a product idea but needed someone to own strategy, acquisition and the technical plumbing end to end."],
-    insight:["personalized pet creative lives or dies on emotional specificity — the more the ad feels like it's about your dog, the higher it converts. generic pet stock imagery doesn't move people; the customization preview does.","so the creative leaned hard into the personalized output itself as the hook — the product is the ad."],
-    pull:"the product was the ad — <span class='hl'>personalization as the hook,</span> not an afterthought.",
-    strategy:["i led the full marketing strategy and ran acquisition across meta and snapchat ads on a €35k budget, building creative around the emotional, personalized payoff.","in parallel i managed the technical integration of the print-on-demand solution — making sure the fulfilment chain held up as volume scaled, so growth didn't break the operation."],
-    quote:{t:"€150,000 in revenue — full strategy and acquisition, from creative to print-on-demand.",c:"oslowuff — consulting engagement"},
+    card:"Advised an investor launching personalized pet products in Norway, €150k revenue, powered by a micro-seeding machine that made awareness, social proof and content almost free.",
+    tags:["consultant","micro-seeding","norway","meta · snapchat"],
+    role:["creative strategist (consultant)","market selection & positioning","micro-seeding & creator flow","meta & snapchat acquisition","product sourcing & pod integration","team building & management"],
+    deliverables:["go-to-market strategy","micro-seeding operation (awareness · social proof · content)","meta + snapchat campaigns (€35k)","product sourcing via china-based agent","pod technical integration","3-person team (video editor · support · intern)"],
+    lede:"I advised an investor who wanted to launch a personalized pet products brand in e-commerce. I steered him toward the Norwegian market, where I'd already built my previous successes, and managed strategy and acquisition end to end, generating €150k in revenue, powered by a micro-seeding machine that made awareness, social proof and content almost free.",
+    problem:["Personalized products convert very well: their uniqueness opens up multiple marketing angles. But every order being unique means the operational chain, from fulfilment to creative diversification, has to hold up behind the promise, which meant selecting suppliers carefully while keeping the model sustainable for the brand.","The market was chosen deliberately: a country full of dog owners with strong online purchase behavior. The real question was how to build awareness and trust for an unknown brand without burning the budget on cold traffic."],
+    insight:["The market did half the work: around 17% of Norwegian households own a dog, and Norwegian online shoppers are among the world's biggest spenders, averaging roughly €2,470 a year online, one of the highest figures globally. A country full of dog owners with deep online buying habits: exactly where an emotional, personalized product converts.","The cheapest creative is the one your customers make for you. By seeding personalized products to micro-creators and real dog owners, we got three assets in one, awareness in their communities, social proof for the funnel, and a constant stream of authentic content to feed the ads, at a fraction of production cost.","And talking to customers changed the way we positioned the product itself: one customer hung their doormat on the wall because it was too cute to walk on. That conversation revealed a whole new pocket of audience, people buying the mat as personalized decor, not as a doormat, and gave us a fresh angle to target."],
+    pull:"our customers made the ads, carried the proof, and even found <span class='hl'>uses for the product we'd never imagined.</span>",
+    strategy:["I built a micro-seeding flow as the acquisition engine's first layer: identifying micro-creators and dog-owner profiles, sending personalized products, and turning every delivery into content, reviews and reach, almost for free. That pipeline fed the paid layer: Meta and Snapchat campaigns (€35k) built on the emotional payoff of personalization, amplified by real customers' content.","I stayed close to the customers themselves, and when one hung the mat on a wall instead of the floor, we turned it into a new targeting angle: personalized home decor for dog lovers. On the supply side, I handled product sourcing through an agent based in China and managed the print-on-demand integration, so the fulfilment chain, from raw product to personalized order, scaled cleanly and kept its margins.","None of it ran solo: I built and managed a small team around the operation. I selected a video editor for the creative pipeline, hired a customer support agent through a structured selection process, and directed an intern who ran the day-to-day micro-seeding flow."],
+    quote:{t:"It was so cute I didn't want to ruin the doormat, so I hung it on the wall.",c:"Customer conversation that opened a new audience"},
+    quoteImg:{file:"oslowuff-3.png",note:"the doormat, hung on the wall"},
     media:[
       {type:"img",file:"oslowuff-1.png",label:"Alexis+DoormatOnside.png",note:"personalized doormat ad (no)"},
-      {type:"img",file:"oslowuff-2.webp",label:"product creative",note:"product creative"}
+      {type:"img",file:"oslowuff-2.webp",label:"product creative",note:"product creative"},
+      {type:"video",url:"https://cdn.shopify.com/videos/c/o/v/36bb7abc7f404476a3d0814c53669d8d.mp4",label:"video creative 1",note:"video creative #1"},
+      {type:"video",url:"https://cdn.shopify.com/videos/c/o/v/20856b4b359d436abba8fb53e3203e28.mov",label:"video creative 2",note:"video creative #2"},
+      {type:"video",url:"https://cdn.shopify.com/videos/c/o/v/267cbfaae35645f89fd46b26f13883a1.mov",label:"video creative 3",note:"video creative #3"},
+      {type:"video",url:"https://cdn.shopify.com/videos/c/o/v/eb3bec541330405e80aac4ae3ac99ff4.mov",label:"video creative 4",note:"video creative #4"}
     ],
-    metrics:[["€150K","revenue"],["€35K","ad spend · meta / snap"],["full","pod integration"]]
+    metrics:[["€150K","revenue"],["€35K","ad spend · meta / snap"],["~free","awareness · proof · content"]]
   },
   {
     id:"magnette",
+    hero:"magnette-hero.png",
+    imgRatio:"45",
     name:"magnette",
+    link:"https://laserviettemagnette.fr",
     tag:"d2c homeware · founder",
     period:"2026",
-    card:"my own brand of magnetic towels — d2c launch, brand, store and creative, live at laserviettemagnette.fr.",
-    tags:["founder","d2c","branding","shopify"],
-    role:["founder","brand & identity","shopify store","creative & acquisition"],
-    deliverables:["brand identity","shopify store","ad creative","go-to-market"],
-    lede:"my own d2c brand of magnetic towels — currently live at laserviettemagnette.fr. a product i'm building from the ground up, applying everything from the brands before it.",
-    problem:["a genuinely useful physical product still needs a reason to exist as a brand. magnette is where i apply my full playbook — positioning, store, creative, acquisition — to something i own end to end.","this is a live, ongoing project, so the case study grows as the brand does."],
-    insight:["homeware sells on demonstration: show the magnetic towel doing the one clever thing it does, and the value is instantly obvious. the creative strategy is built around that single satisfying proof.","more content and results to come as the launch matures."],
-    pull:"my own brand — where i run <span class='hl'>the full playbook end to end.</span>",
-    strategy:["i'm handling brand identity, the shopify store, the creative and the acquisition myself — the same chain i've run for clients, now on my own product.","detailed numbers and creative to be added as the launch progresses."],
-    quote:{t:"live now at laserviettemagnette.fr.",c:"magnette — 2026, ongoing"},
+    card:"My own magnetic towel brand, tested in Réunion at €3.40 CPMs before a France launch, built on diversity, good mood and storytelling.",
+    tags:["founder","réunion → france","micro-seeding","storytelling"],
+    role:["founder","brand & identity","shopify store","creative & acquisition","field selling & customer research"],
+    deliverables:["brand identity","shopify store","micro-seeding operation","collaborative ugc posts","go-to-market réunion → france"],
+    lede:"My own magnetic towel brand, currently live. A brand I'm building from the ground up, applying everything learned from the brands before it, with a vision built on diversity, good mood and storytelling.",
+    problem:["France is a great market: sophisticated, highly competitive, with remarkably loyal buyers, and around €160b a year in online consumer purchases. But advertising costs keep rising: CPMs run around €6.80 in France versus roughly €3.40 in Réunion.","So I shifted the test to Réunion Island, a growing e-commerce scene with very low CPMs and no seasonality, where I could build awareness, social proof and content from scratch."],
+    insight:["Cheap CPMs naturally led the test to Réunion: product-market fit validation on a French-speaking market, without burning the budget, and without being watched by competitors before the real launch. Réunion was the perfect testing ground: validate PMF cheap, build the creative library, then move to France, where no similar brand exists for this kind of product. The odds were on our side.","Like Oslowuff, I used micro-seeding to get awareness and free content, and it worked: one seeded post went viral with more than 400k views."],
+    pull:"i test where it's cheap and launch where it counts: <span class='hl'>réunion first, france next.</span>",
+    strategy:["To support digital sales, I also sold on the beach market, making content for the brand at the same time, building credibility, and talking with customers right after the sale to understand their real motivation for buying.","The micro-seeding brought excellent content from UGC creators building their portfolios. We boosted their posts to grow their reach too, and published as collaborative posts, which gave us two things at once: stronger social proof from a third-party account, and visibility for the brand."],
+    quote:{t:"One seeded post went viral: 400,000+ views, almost for free.",c:"Magnette, micro-seeding, 2026"},
     media:[
       {type:"img",file:"magnette-1.png",label:"Image Ad- Magiskhand.png",note:"image ad creative"},
-      {type:"video",file:"magnette-video-1.mp4",label:"VideoAd- Magiskhand.mp4",note:"video ad creative"},
-      {type:"note",file:"magnette-2.png",label:"magnette-2.png",note:"ADD MAGNETTE STORE + RESULTS HERE"}
+      {type:"video",url:"https://cdn.shopify.com/videos/c/o/v/7cafd6face6847cc8c4aca0a492c4d77.mp4",label:"video creative 1",note:"video creative #1"},
+      {type:"video",url:"https://cdn.shopify.com/videos/c/o/v/7b1cc8cab925406ba1afe4407f60e9a2.mp4",label:"video creative 2",note:"video creative #2"},
+      {type:"video",url:"https://cdn.shopify.com/videos/c/o/v/0f63b72fed0a4c9f957413210396404b.mp4",label:"video creative 3",note:"video creative #3"},
+      {type:"video",url:"https://cdn.shopify.com/videos/c/o/v/d3f08960e1244de5aed9ca05b535e8ec.mp4",label:"video creative 4",note:"video creative #4"},
+      {type:"video",url:"https://cdn.shopify.com/videos/c/o/v/26a851ca9cfd43bdbac4f86b2bf4f547.mov",label:"video creative 5",note:"video creative #5"},
+      {type:"note",file:"magnette-2.png",label:"magnette-2.png",note:"seeded ugc content · beach market shots"}
     ],
-    metrics:[["live","laserviettemagnette.fr"],["2026","launch year"],["solo","full ownership"]]
+    metrics:[["€3.40","cpm réunion vs €6.80 france"],["400K+","views on one seeded post"],["€160B","french e-commerce market"]]
   }
 ];
 
 const RESUME = [
-  {role:"creative strategist & media buyer",org:"bobiotics",date:"mar 2026 — jun 2026",desc:"led the german-market go-to-market for a dog supplement brand: positioning, creative angles, full art direction, dach copy adaptation and initial acquisition spend."},
-  {role:"marketing lead & lead designer",org:"arkeyz web design",date:"oct 2025 — present",desc:"hybrid role: digital marketing strategy, ui/ux interfaces and optimized sales funnels — turning every touchpoint into measurable growth for clients."},
-  {role:"co-founder & head of growth",org:"proestrellas / tæppstars",date:"feb 2025 — aug 2026",desc:"nfc/qr review-collection startup. built a proprietary redirect system and brand, drove €25k revenue via meta ads, recruited and led a field sales team to validate pmf."},
-  {role:"creative strategist (consultant)",org:"oslowuff",date:"jan 2024 — dec 2024",desc:"custom pet-products d2c brand. full marketing strategy and acquisition on meta & snapchat (€35k budget), print-on-demand integration. €150k revenue."},
-  {role:"co-founder & head of marketing",org:"atelierramatuelle",date:"jul 2023 — oct 2024",desc:"beauty & wellness brand from idea to €800k revenue. €300k+ ad spend across meta/tiktok/snapchat, awareness-based creative matrix, €30k influence campaigns."},
-  {role:"founder & creative strategist",org:"sølvfjord",date:"feb 2023 — feb 2024",desc:"connected-watch brand. full e-commerce chain — shopify build, branding, meta acquisition. €300k sales on €90k spend, with roas/cpa optimization and cro."}
+  {role:"creative strategist & media buyer",org:"bobiotics",date:"mar 2026 — jun 2026",desc:"Led the German-market go-to-market for a dog supplement brand: positioning, creative angles, full art direction, DACH copy adaptation and initial acquisition spend."},
+  {role:"marketing lead & lead designer",org:"arkeyz web design",date:"oct 2025 — present",desc:"Hybrid role: digital marketing strategy, ui/ux interfaces and optimized sales funnels, turning every touchpoint into measurable growth for clients."},
+  {role:"co-founder & head of growth",org:"proestrellas / tæppstars",date:"feb 2025 — aug 2026",desc:"NFC/QR review-collection startup. Built a proprietary redirect system and brand, drove €25k revenue via Meta Ads, recruited and led a field sales team to validate PMF."},
+  {role:"creative strategist (consultant)",org:"oslowuff",date:"jan 2024 — dec 2024",desc:"Personalized pet products D2C brand on the Norwegian market. Built a micro-seeding creator flow for near-free awareness, social proof and content, ran Meta & Snapchat acquisition (€35k), sourced products via a China-based agent and integrated print-on-demand. Built and managed a 3-person team (video editor, customer support, micro-seeding intern). €150k revenue."},
+  {role:"co-founder & head of marketing",org:"atelierramatuelle",date:"jul 2023 — oct 2024",desc:"Beauty tech brand on the Norwegian market, from idea to €800k revenue. Positioned as the affordable Norwegian option, built a structured creator outreach operation, and managed €300k+ ad spend across Meta/TikTok/Snapchat with an awareness-based testing matrix. €28k on Black Friday 2023."},
+  {role:"founder & creative strategist",org:"sølvfjord",date:"feb 2023 — feb 2024",desc:"Connected-watch brand. Full e-commerce chain, Shopify build, branding, Meta acquisition. €300k sales on €90k spend, with ROAS/CPA optimization and cro."}
 ];
 
 /* ---------------- RENDER ---------------- */
 const $ = s=>document.querySelector(s);
 const IMG = "images/";
 function ph(txt,label){return `<div class="ph">${txt}<span class="tag">${label}</span></div>`;}
-const slotMarkup = m=>{
-  const cls = m.type==="video" ? "slot vid" : (m.type==="note" ? "slot wide" : "slot sq");
+const slotMarkup = (m,imgCls)=>{
+  const cls = m.type==="video" ? "slot vid" : (m.type==="note" ? "slot wide" : "slot "+(imgCls||"sq"));
+  const src = m.url || (m.file ? IMG+m.file : null);
   if(m.type==="video"){
-    const inner = m.file
-      ? `<video src="${IMG}${m.file}" controls muted loop playsinline onerror="this.replaceWith(window.__phEl('${m.note.replace(/'/g,"\\'")}','${m.label.replace(/'/g,"\\'")}',true))"></video>`
+    const inner = src
+      ? `<video src="${src}" controls muted loop playsinline preload="metadata" onerror="this.replaceWith(window.__phEl('${m.note.replace(/'/g,"\\'")}','${m.label.replace(/'/g,"\\'")}',true))"></video>`
       : `<div class="ph"><span class="play">▶</span>${m.note}<span class="tag">${m.label}</span></div>`;
     return `<div class="${cls}">${inner}</div>`;
   }
   // img or note → both try to load an image, fall back to a labeled placeholder
   const fallbackTxt = m.note;
-  const inner = m.file
-    ? `<img src="${IMG}${m.file}" alt="${m.note.replace(/"/g,'')}" onerror="this.replaceWith(window.__phEl('${m.note.replace(/'/g,"\\'")}','${m.label.replace(/'/g,"\\'")}',false))">`
+  const inner = src
+    ? `<img src="${src}" alt="${m.note.replace(/"/g,'')}" onerror="this.replaceWith(window.__phEl('${m.note.replace(/'/g,"\\'")}','${m.label.replace(/'/g,"\\'")}',false))">`
     : `<div class="ph">${fallbackTxt}<span class="tag">${m.label}</span></div>`;
   return `<div class="${cls}">${inner}</div>`;
 };
@@ -564,10 +640,8 @@ window.__phEl = (txt,label,isVideo)=>{
 function buildTiles(){
   const g = $("#tileGrid");
   g.innerHTML = PROJECTS.map((p,i)=>{
-    const first = p.media[0];
-    const thumb = first.file
-      ? `<img src="${IMG}${first.file}" alt="${p.name}" onerror="this.replaceWith(window.__phEl('${first.note.replace(/'/g,"\\'")}','${first.label.replace(/'/g,"\\'")}',false))">`
-      : `<div class="ph">${first.label}</div>`;
+    const heroFile = p.hero;
+    const thumb = `<img src="${IMG}${heroFile}" alt="${p.name}" onerror="this.replaceWith(window.__phEl('${p.name} hero','${heroFile}',false))">`;
     return `
     <a class="tile reveal" data-case="${p.id}" href="#${p.id}">
       <span class="arrow">↗</span>
@@ -598,31 +672,36 @@ function buildCase(id){
   const p = PROJECTS[i];
   const prev = PROJECTS[(i-1+PROJECTS.length)%PROJECTS.length];
   const next = PROJECTS[(i+1)%PROJECTS.length];
+  const imgCls = p.imgRatio==="45" ? "r45" : "sq";
   const vids = p.media.filter(m=>m.type==="video");
   const imgs = p.media.filter(m=>m.type==="img");
   const notes = p.media.filter(m=>m.type==="note");
 
+  const slider=(items,label)=>`
+    <div class="slider">
+      <div class="shead"><p class="eyebrow" style="margin:0">${label}</p>
+        <div class="snav"><button data-dir="-1" aria-label="previous">←</button><button data-dir="1" aria-label="next">→</button></div>
+      </div>
+      <div class="strack">${items.map(it=>slotMarkup(it,imgCls)).join("")}</div>
+    </div>`;
   let mediaHTML = "";
-  if(vids.length){
-    mediaHTML += `<p class="eyebrow" style="margin:0 0 14px">video creative</p><div class="gallery ${vids.length>=3?'g3':vids.length===2?'g2':''}">${vids.map(slotMarkup).join("")}</div>`;
+  if(p.imgFirst){
+    if(imgs.length) mediaHTML += slider(imgs,"image creative");
+    if(vids.length) mediaHTML += slider(vids,"video creative");
+  } else {
+    if(vids.length) mediaHTML += slider(vids,"video creative");
+    if(imgs.length) mediaHTML += slider(imgs,"image creative");
   }
-  if(imgs.length){
-    mediaHTML += `<p class="eyebrow" style="margin:24px 0 14px">static creative</p><div class="gallery ${imgs.length>=3?'g3':imgs.length===2?'g2':''}">${imgs.map(slotMarkup).join("")}</div>`;
-  }
-  if(notes.length){
-    mediaHTML += `<div class="gallery">${notes.map(slotMarkup).join("")}</div>`;
-  }
+  if(notes.length) mediaHTML += `<div class="gallery">${notes.map(it=>slotMarkup(it)).join("")}</div>`;
 
-  const heroFirst = p.media[0];
-  const heroInner = heroFirst.file
-    ? `<img src="${IMG}${heroFirst.file}" alt="${p.name}" onerror="this.replaceWith(window.__phEl('${heroFirst.label.replace(/'/g,"\\'")} — hero','${heroFirst.label.replace(/'/g,"\\'")}',false))">`
-    : `<div class="ph" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;color:#908d83;text-transform:uppercase">${heroFirst.label} — hero</div>`;
+  const heroInner = `<img src="${IMG}${p.hero}" alt="${p.name}" onerror="this.replaceWith(window.__phEl('${p.name} hero','${p.hero}',false))">`;
 
   $("#caseInner").innerHTML = `
     <a class="back" href="#" data-go="home">← all work</a>
     <p class="case-tag reveal">${p.tag} · ${p.period}</p>
     <h1 class="reveal">${p.name}</h1>
     <p class="lede reveal">${p.lede}</p>
+    ${p.link?`<p class="reveal" style="margin-top:20px"><a href="${p.link}" target="_blank" rel="noopener" class="plink">see the project ↗</a></p>`:""}
 
     <div class="case-hero reveal">${heroInner}</div>
 
@@ -635,13 +714,15 @@ function buildCase(id){
 
     <div class="metrics reveal">${p.metrics.map(m=>`<div><div class="n">${m[0]}</div><div class="l">${m[1]}</div></div>`).join("")}</div>
 
-    <div class="block reveal"><span class="eyebrow">the insight</span><h2>what actually moved the number</h2>${p.insight.map(t=>`<p>${t}</p>`).join("")}</div>
+    <div class="block reveal"><span class="eyebrow">the insight</span><h2>what actually moved the needle?</h2>${p.insight.map(t=>`<p>${t}</p>`).join("")}</div>
 
     <p class="pull reveal">${p.pull}</p>
 
-    <div class="block reveal"><span class="eyebrow">the strategy</span><h2>how i built it</h2>${p.strategy.map(t=>`<p>${t}</p>`).join("")}</div>
+    <div class="block reveal"><span class="eyebrow">the strategy</span><h2>the marketing strategy</h2>${p.strategy.map(t=>`<p>${t}</p>`).join("")}</div>
 
     <blockquote class="quote reveal">"${p.quote.t}"<cite>${p.quote.c}</cite></blockquote>
+
+    ${p.quoteImg?`<div class="gallery reveal">${slotMarkup({type:"note",file:p.quoteImg.file,label:p.quoteImg.file,note:p.quoteImg.note})}</div>`:""}
 
     <div class="reveal"><p class="eyebrow" style="margin:0 0 6px">the work</p><h2 style="font-size:clamp(24px,3.2vw,38px);font-weight:700;letter-spacing:-.02em;text-transform:lowercase;margin-bottom:24px">selected creative</h2>${mediaHTML}</div>
 
@@ -663,6 +744,12 @@ function show(view){
 function openCase(id){ buildCase(id); show("case"); observeReveals(); }
 
 document.addEventListener("click",e=>{
+  const sBtn = e.target.closest(".snav button");
+  if(sBtn){
+    const track = sBtn.closest(".slider").querySelector(".strack");
+    track.scrollBy({left: parseInt(sBtn.dataset.dir,10) * track.clientWidth * 0.75, behavior:"smooth"});
+    return;
+  }
   const caseEl = e.target.closest("[data-case]");
   const goEl = e.target.closest("[data-go]");
   if(caseEl){ e.preventDefault(); openCase(caseEl.dataset.case); return; }
